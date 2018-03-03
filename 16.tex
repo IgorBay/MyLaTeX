@@ -1,0 +1,61 @@
+\documentclass[14pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath}
+\usepackage{hyperref} 
+\numberwithin{equation}{section}
+\begin{document}
+ \tableofcontents 
+    \newpage
+    \section{Формула включений и исключений} 
+Полезным средством при решении комбинаторных задач является формула
+включений и исключений, позволяющая находить мощность объединения
+различных множеств, если известны мощности их пересечений.
+\newtheorem{Th}{ Теорема}
+\begin{Th}
+Для любых конечных множеств $A_1$,\ldots,$A_n$справедливо \\равенство
+\begin{equation}
+\begin{split}
+|A_1\cup\dots\cup A_n|=\sum_{1\le i \le n}|A_i|- \sum_{1\le i_1 < i_2 \le n}|A_{i_1} \cap A_{i_2}|+\ldots \\
+\dots+(-1)^{k+1} \sum_{1 \le _1<\dots <i_k \le n}|A_{i_1}\cap\dots\cap A_{i_k}|+ \ldots \\ 
+\dots+(-1)^{n=1}|A_1\cap\dots\cap A_n|
+\label{eq.simple}
+\end{split}
+\end{equation}
+\end{Th}
+{\scshapeДоказательство}. Пусть целое $m$ m не меньше нуля и не больше $n$. Допустим, что некоторый элемент $a$ принадлежит ровно $m$ множествам. Тогда $a$ принадлежит $( \begin{smallmatrix} m\\2 \end{smallmatrix})$
+попарным пересечениям множеств  $A_1$,\ldots,$A_n$ ,$( \begin{smallmatrix} m\\3 \end{smallmatrix})$ тройным пересечениям этих множеств, и, в общем случае, $( \begin{smallmatrix} m\\k \end{smallmatrix})$ пересечениям по $k$ множеств. Следовательно, в сумме, стоящей в правой части ~\eqref{eq.simple}, этот
+элемент будет учтен ровно
+\begin{equation}
+\begin{pmatrix} m \\ 1  \end{pmatrix} -  \begin{pmatrix} m \\ 1  \end{pmatrix} + \dots + (-1)^{k+1} \begin{pmatrix} m \\ k \end{pmatrix} + \dots + (-1)^{m+1} \begin{pmatrix} m \\ m  \end{pmatrix}.
+    \label{eq.second}
+\end{equation}
+раз. Из (1.7) следует, что
+\begin{equation*}
+    (1-1)^m = 1- \begin{pmatrix} m \\ 1  \end{pmatrix} +\begin{pmatrix} m \\ 2  \end{pmatrix}-\dots+(-1)^k\begin{pmatrix} m \\ k  \end{pmatrix}+\dots+(-1)^m\begin{pmatrix} m \\ m  \end{pmatrix}.
+\end{equation*}
+Поэтому сумма~\eqref{eq.second} равна единице. Следовательно, в правой части~\eqref{eq.second} каждый элемент, принадлежащий объединению множеств $A_i$, учитывается
+ровно один раз и, поэтому, вся сумма равна мощности объединения этих
+множеств. Теорема доказана.
+\newtheorem{Th}{ Теорема}
+\begin{Th} Если $m=p_1^{k_1}p_2^{k_2} \ldots p_n^{k_n}$, то
+\begin{equation*}
+    \varphi(m)=m\left(1-\frac1{p_1}\right)\left(1-\frac1{p_2}\right)\ldots\left(1-\frac1{p_n}\right).
+\end{equation*}
+\end{Th}
+{\scshapeДоказательство}. Пусть множество $A_i$ состоит из всех натуральных чисел, каждое из которых не превосходит $m$ и делится на $p_i$.Тогда множество $A_1\cup\dots\cup A_n$ состоит из всех натуральных чисел, каждое из которых не превосходит $m$ и имеет с $m$ хотя бы один общий делитель больший единицы.\\Следовательно,
+\begin{equation*}
+     \varphi(m)=m-|A_1 \cup\ldots\cup A_n|.
+\end{equation*}
+Нетрудно видеть, что $|A_{i_1}\cap\dots\cap A_{i_k}|=\frac m{p_{i_1}\dots p_{i_s}}$ для любых $i_1,\ldots,i_s$.Поэтому для вычисления мощности объединения множеств $A_i$ можно воспользоваться формулой включений–исключений:
+\begin{align*}
+    |A_1\cup\dots\cup A_n|  &=\sum_{1\le i \le n}|A_i|+\ldots+(-1)^{s+1}\sum_{1 \le t_1 <\dots< t_s \le n}|A_{i_1}\cap\dots\cap A_{i_s}|+\ldots\\
+        &=\sum_{1\le i \le n}\frac m{p_i}+\dots+(-1)^{s+1}\sum_{1 \le i_n<\dots< i_s \le n}\frac m{p_{i_1}\dotsp_{i_s}}+\ldots
+\end{align*}
+Теперь осталось заметить, что после раскрытия скобок в формуле
+\begin{align*}
+    m-m\left(1-\frac1{p_1}\right)\left(1-\frac1{p_2}\right)\ldots\left(1-\frac1{p_n}\right)
+\end{align*}
+получится такое же выражение, как и в правой части последнего равенства.
+Теорема доказана.
+\end{document}
